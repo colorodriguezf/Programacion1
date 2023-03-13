@@ -13,6 +13,7 @@ public class final_3Marzo23 {
     public static final char MINVALOR = 'a';
     public static final char MAXVALOR = 'z';
     public static final double PROB_LETRA = 0.4;
+    public static final int CANT_CONSONANTES = 2;
 
     public static void main(String[] args){
         char[][] mat = new char[MAXFILA][MAXCOLUMNA];
@@ -25,6 +26,13 @@ public class final_3Marzo23 {
         imprimir_matriz(mat);
     }
 
+
+    public static void eliminar_dos_caracteres_consonantes(char[][] mat) {
+        for(int f = 0; f < MAXFILA; f++) {
+            eliminar_dos_caracteres_consonantes_x_fila(mat[f]);
+        }
+    }
+    
     public static void eliminar_dos_caracteres_consonantes_x_fila(char[] arr) {
         int inicio =0;
         int fin = -1;
@@ -46,13 +54,13 @@ public class final_3Marzo23 {
             arr[pos] = arr[pos+1];
             pos++;
         }      
-    }
+    } 
 
     public static void eliminar_caracteres(char[] arr, int inicio, int fin) {
         int contador = 0;
         int pos1 = 0;
         int pos2 = 0;
-        while(fin >= inicio && contador <= 2) {
+        while(fin >= inicio && contador <= CANT_CONSONANTES) {
             if(es_consonante(arr[fin])) {
                 if(contador == 0) {
                     pos1 = fin;
@@ -63,7 +71,7 @@ public class final_3Marzo23 {
                 //si hacia corrimiento a izq de pos, si el contador no llegaba a 2 me hacia el corrimiento igual, y pide que sean las ultimas
                 //2 consonantes
                 contador++;
-                if(contador == 2){
+                if(contador == CANT_CONSONANTES){
                     corrimiento_izquierda(arr, pos1);
                     corrimiento_izquierda(arr, pos2);
                 }
@@ -93,12 +101,6 @@ public class final_3Marzo23 {
         }
         else {
             return -1;
-        }
-    }
-
-    public static void eliminar_dos_caracteres_consonantes(char[][] mat) {
-        for(int f = 0; f < MAXFILA; f++) {
-            eliminar_dos_caracteres_consonantes_x_fila(mat[f]);
         }
     }
 

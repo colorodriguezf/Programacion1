@@ -22,22 +22,31 @@ public class metodos {
         ordenar_menor_a_mayor(arr);
         System.out.print("\nArreglo ordenado de menor a mayor: \n");
         imp_arreglo(arr);
+        corrimiento_derecha(arr, 3);
+        System.out.print("\n Corrimiento a derecha desde la pos 3: para poder insertar el numero 5\n");
+        imp_arreglo(arr);
+        System.out.print("\n Insertamos numero 5 ordenado\n");
+        arr[3] = 5;
+        imp_arreglo(arr);
+        corrimiento_izquierda(arr, 1);
+        System.out.print("\nBorramos la pos 1 del arreglo (numero 3): \n");
+        imp_arreglo(arr);
 
         //---------------------------------------------------
+        
         System.out.print("\n\n\n-------------MATRICES--------------------");
         cargar_matriz_aleatoria(mat);
         System.out.println("\nMatriz aleatoria de enteros: ");
         imprimir_mat(mat);
     }
+
     //ARREGLOS:
     public static void cargar_arreglo(int[] arr) {
         arr[0] = 2;
-        arr[1] = 3;
-        arr[2] = 1;
+        arr[1] = 8;
+        arr[2] = 6;
         arr[3] = 4;
         arr[4] = 3;
-
-
     }
 
     //ORDENA DE MAYOR A MENOR UN ARREGLO
@@ -76,6 +85,27 @@ public class metodos {
         }
     }
 
+        //Corrimiento derecha: a insertar numero 5
+    //tengo |2|3|4|6|8| corrimiento desde pos 3(6)
+    //queda |2|3|4|4|6| corro a partir del 6, y se elimina la ultima posicion (numero 8)
+    public static void corrimiento_derecha(int[] arr, int pos) {
+        int posFinal = MAXFILA-1;
+        while(posFinal > pos) {
+            arr[posFinal] = arr[posFinal-1];
+            posFinal--;
+        }
+    }   
+
+    //Corrimiento izquierda:
+    //tengo |2|3|4|5|6| corrimiento desde pos 1(3)
+    //queda |2|4|5|6|6| corro a partir del 3
+    public static void corrimiento_izquierda(int[] arr, int pos) {
+        while(pos < MAXFILA-1) {
+            arr[pos] = arr[pos + 1];
+            pos++;
+        }
+    }
+
     //--------------------------------------------------------------------------------------------
     //MATRICES:
 
@@ -102,10 +132,10 @@ public class metodos {
             pos++;
         }
         return pos-1;
-    }
+    } 
 
 
-    //Carga e imppresion de matriz aleatoria:
+    //---------Carga e imppresion de matriz aleatoria:-------------
     public static void imprimir_mat(int[][] mat) {
         for(int f = 0; f < MAXFILA; f++) {
             System.out.print("\n");
