@@ -60,7 +60,7 @@ public class final_3Marzo23 {
         int contador = 0;
         int pos1 = 0;
         int pos2 = 0;
-        while(fin >= inicio && contador <= CANT_CONSONANTES) {
+        while(fin >= inicio && contador < CANT_CONSONANTES) {
             if(es_consonante(arr[fin])) {
                 if(contador == 0) {
                     pos1 = fin;
